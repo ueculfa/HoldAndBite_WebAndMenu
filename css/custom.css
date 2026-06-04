@@ -1,0 +1,120 @@
+
+
+/* Add spacing between gallery/instafeed images */
+.instafeed .image-row .background-image-holder {
+	padding: 8px;
+	box-sizing: border-box;
+}
+.instafeed .image-row .background-image-holder img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.image-slider.slider-arrow-controls {
+    min-height: 400px; /* Görselinin ortalama yüksekliğine göre bu değeri ayarlayabilirsin */
+}
+/* veya modern tarayıcılar için aspect-ratio kullanabilirsin */
+.image-slider img {
+    aspect-ratio: 16 / 9; /* Görsel oranına göre değiştir (örneğin 21/9) */
+    width: 100%;
+    object-fit: cover;
+}
+/* Location Cards Styling */
+.locations-cards-container {
+	display: none;
+	grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+	gap: 30px;
+	margin-bottom: 40px;
+	animation: fadeIn 0.5s ease-in-out;
+}
+
+.locations-cards-container.active {
+	display: grid;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.location-card {
+	overflow: hidden;
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.location-card:hover {
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px);
+}
+
+.location-card .card-inner {
+	background: white;
+	overflow: hidden;
+}
+
+.location-card .map-embed-holder {
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	background: #f5f5f5;
+}
+
+.location-card .map-embed-holder iframe {
+	width: 100% !important;
+	height: 100% !important;
+	border: none !important;
+}
+
+.location-card .card-info {
+	padding: 25px !important;
+	background: white;
+	border-top: 3px solid #333;
+}
+
+.location-card .card-info h4 {
+	font-size: 18px;
+	font-weight: 700;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.location-card .card-info p {
+	font-size: 14px;
+	line-height: 1.6;
+	color: #555;
+}
+
+.location-card .card-info .bold {
+	font-weight: 600;
+	color: #333;
+}
+
+.location-card .card-info .sub {
+	color: #e74c3c;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.locations-cards-container {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.location-card .map-embed-holder {
+		height: 250px;
+	}
+
+	.location-card .card-info {
+		padding: 20px !important;
+	}
+}
