@@ -4,18 +4,37 @@
         <meta charset="utf-8">
         <title>Hold And Bite</title>
         <meta name="viewport" content="width=device-width, initial-scale=0.9">
+        <link rel="icon" type="image/png" href="LogoHoldAndBite.png">
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
 
         <style>
-                @media (max-width: 767px) {
-                /* 1. Hakkımızda bölümünün üst boşluğunu sıfırla ve zorla yukarı çek */
+            /* Genel kaydırma hizalaması (Sabit üst menü için) */
+            section {
+                scroll-margin-top: 80px;
+            }
+
+            @media (max-width: 767px) {
+                /* Üstteki ana görseli mobilde büyüt ve gereksiz boşlukları al */
+                .top-hero-section {
+                    padding-bottom: 0 !important;
+                    margin-bottom: -18px !important;
+                    overflow: hidden;
+                }
+                .top-hero-section .image-slider img {
+                    transform: scale(1.15); /* Görseli %15 daha büyük gösterir */
+                    transform-origin: center bottom;
+                    margin-bottom: -15px; /* Altındaki fazlalığı keser */
+                }
+
+                /* 1. Hakkımızda bölümünün kayma mesafesini ve üst boşluğunu düzeltme */
                 #about {
                     padding-top: 0 !important;
-                    margin-top: -40px !important; /* Eğer bu çok bitişik yaparsa -40px değerini -20px olarak değiştirebilirsin */
+                    margin-top: -105px !important; /* Görsele doğru daha fazla yukarı çektik */
+                    scroll-margin-top: 70px;
                 }
 
                 /* 2. Flexslider'ın fotoğraf altında bıraktığı görünmez boşlukları yok et */
@@ -34,7 +53,117 @@
                     margin: 0 !important;
                     padding: 0 !important;
                 }
-            }         
+                
+                /* İletişim kartları arası mobil boşluk */
+                .location-card {
+                    margin-bottom: 24px;
+                }
+            }
+
+            .logo {
+                max-height: 220px;
+                width: auto;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .footer-logo {
+                max-height: 140px;
+                width: auto;
+                display: block;
+                margin: 0 auto;
+            }
+
+            @media (min-width: 768px) {
+                .footer-copyright {
+                    margin-top: 40px;
+                }
+            }
+
+            .menu-category {
+                background: #fff;
+                border: 1px solid rgba(0,0,0,0.08);
+                border-radius: 12px;
+                padding: 28px 24px;
+                margin-bottom: 24px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            }
+
+            .menu-category h5 {
+                margin-bottom: 18px;
+                font-size: 18px;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+
+            .menu-item {
+                display: flex;
+                justify-content: space-between;
+                gap: 14px;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+            }
+
+            .menu-item p {
+                margin: 0;
+                color: #666;
+                flex: 1;
+                min-width: 0;
+            }
+
+            .menu-item .price {
+                font-weight: 700;
+                white-space: nowrap;
+                margin-left: 16px;
+            }
+
+            .menu-tab-heading {
+                margin-bottom: 12px;
+                display: inline-block;
+                padding: 10px 18px;
+                border-radius: 999px;
+                background: rgba(255,255,255,0.18);
+                font-weight: 700;
+                letter-spacing: 0.04em;
+            }
+            
+            /* Burger Görselleri İçin Kapsayıcı Sınıf */
+            .burger-img-wrapper {
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                margin-bottom: 20px;
+                background: #fff;
+            }
+            
+            .burger-img-wrapper img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            @media (max-width: 767px) {
+                .logo {
+                    max-height: 160px;
+                }
+
+                .footer-logo {
+                    max-height: 110px;
+                }
+
+                .menu-category {
+                    padding: 22px 18px;
+                }
+
+                .menu-item {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .menu-item .price {
+                    margin: 8px 0 0 0;
+                }
+            }
         </style>
         <link href='http://fonts.googleapis.com/css?family=Montserrat%7CInconsolata:400,700%7CPathway+Gothic+One' rel='stylesheet' type='text/css'>  
     </head>
@@ -42,13 +171,12 @@
         <div class="nav-container">
             <a id="top"></a>
             <nav class="pb16 pb-xs-0">
-                
                 <div class="pt120 pb80 pt-xs-40 pb-xs-16">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 text-center">
                                 <a href="index.html">
-                                    <img alt="Logo" class="logo" src="logo.png" />
+                                    <img alt="Logo" class="logo" src="LogoHoldAndBite.png" />
                                 </a>
                             </div>
                         </div>
@@ -68,7 +196,7 @@
                                         <a href="#about" class="inner-link">Hakkımızda</a>
                                     </li>
                                     <li>
-                                        <a href="#menu" class="inner-link">Menü</a>
+                                        <a href="menu.html" class="inner-link">Menü</a>
                                     </li>
                                     <li>
                                         <a href="#contact" class="inner-link">İletişim</a>
@@ -83,7 +211,8 @@
             </nav>
         </div>
         <div class="main-container">
-            <section class="pb0 pt0">
+            <!-- Sınıfa top-hero-section eklendi -->
+            <section class="pb0 pt0 top-hero-section">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 text-center">
@@ -100,9 +229,10 @@
                 </div>
                 <!--end of container-->
             </section>
+            
             <section id="about" class="pb0">
                 <div class="container">
-                    <div class="row  mb64 mb-xs-40">
+                    <div class="row mb64 mb-xs-40">
                         <div class="col-sm-12 text-center">
                             <div class="ribbon">
                                 <h6 class="uppercase mb0">Hakkımızda</h6>
@@ -168,7 +298,7 @@
             <section class="pb0">
                 <div class="container">
                     <div class="row image-row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 mb-xs-24">
                             <div class="background-image-holder">
                                 <img alt="Background Image" src="HB-Foto30.png" />
                             </div>
@@ -183,281 +313,44 @@
                 </div>
                 <!--end of container-->
             </section>
-            <a id="menu"></a>
-            <section class="pb0">
-                <div class="container">
-                    <div class="row  mb64 mb-xs-40">
-                        <div class="col-sm-12 text-center">
-                            <div class="ribbon">
-                                <h6 class="uppercase mb0">Menu</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of row-->
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1 col-sm-12">
-                            <div class="tabbed-content text-tabs">
-                                <ul class="tabs mb64 mb-xs-24">
-                                    <li class="active">
-                                        <div class="tab-title">
-                                            <span>Breakfast</span>
-                                        </div>
-                                        <div class="tab-content">
-                                            <div class="col-sm-6 p0">
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Treacle soaked bircher muesli</span>
-                                                    <p class="mb0">
-                                                        w/ coconut milk, goji berries, dehydrated
-                                                        <br class="hidden-xs" /> cranberries & yoghurt.
-                                                    </p>
-                                                    <span class="block">12</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Dukkah Toast</span>
-                                                    <p class="mb0">
-                                                        w/ roasted vine tomatoes, dukkah with
-                                                        <br class="hidden-xs" /> marinated goats cheese & avocado on toast
-                                                    </p>
-                                                    <span class="block">14</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Sweet Corn Fritters</span>
-                                                    <p class="mb0">
-                                                        w/ avocado mash, fetta & chicory dressed
-                                                        <br class="hidden-xs" /> with crème fraiche
-                                                    </p>
-                                                    <span class="block">17</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">French omelette</span>
-                                                    <p class="mb0">
-                                                        fresh herbs, Spanish onion, roasted peppers,
-                                                        <br class="hidden-xs" /> spinach & fetta served with brioche
-                                                    </p>
-                                                    <span class="block">19</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 p0">
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Ricotta hotcakes</span>
-                                                    <p class="mb0">
-                                                        w/ banana, vanilla yoghurt, pistachio,
-                                                        <br class="hidden-xs" /> chestnut flower honey (V)
-                                                    </p>
-                                                    <span class="block">14</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Fried duck eggs</span>
-                                                    <p class="mb0">
-                                                        toast, parma prosciutto, roasted tomato,
-                                                        <br class="hidden-xs" /> green olives and parmesan
-                                                    </p>
-                                                    <span class="block">16</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Padre Feast</span>
-                                                    <p class="mb0">
-                                                        eggs to your liking w mushrooms, roasted tomatoes, chorizo, istra bacon & house relish on toast
-                                                    </p>
-                                                    <span class="block">21</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="tab-title">
-                                            <span>Lunch</span>
-                                        </div>
-                                        <div class="tab-content">
-                                            <div class="col-sm-6 p0">
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Pan seared snapper</span>
-                                                    <p class="mb0">
-                                                        w/ potato galette, broccolini,
-                                                        <br class="hidden-xs" /> purple cauliflower & shaved baby
-                                                        <br class="hidden-xs" /> heirloom beets.
-                                                    </p>
-                                                    <span class="block">19</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Baked millet and vegetable root</span>
-                                                    <p class="mb0">
-                                                        w/ two poached eggs, activated
-                                                        <br class="hidden-xs" /> cashew cream & supergreens pesto.
-                                                    </p>
-                                                    <span class="block">20</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Smoked Beetroot Salad</span>
-                                                    <p class="mb0">
-                                                        w/ roasted pumpkin, walnuts,
-                                                        <br class="hidden-xs" /> chard and goats cheese (V)
-                                                    </p>
-                                                    <span class="block">21</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Baked Duck Burger</span>
-                                                    <p class="mb0">
-                                                        brioche bun, maple bacon, smoked
-                                                        <br class="hidden-xs" /> tomato reslish and fries
-                                                    </p>
-                                                    <span class="block">24</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 p0">
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Grilled broccolini salad</span>
-                                                    <p class="mb0">
-                                                        w/ poached duck egg, peas, sprouts
-                                                        <br class="hidden-xs" /> and lemon (GF)
-                                                    </p>
-                                                    <span class="block">16.5</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Herb crusted rockling fillet</span>
-                                                    <p class="mb0">
-                                                        house tartare, cos hearts,
-                                                        <br class="hidden-xs" /> cucumber and radish
-                                                    </p>
-                                                    <span class="block">18</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="tab-title">
-                                            <span>Drinks</span>
-                                        </div>
-                                        <div class="tab-content">
-                                            <div class="col-sm-6 p0">
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Single origin coffee</span>
-                                                    <p class="mb0">
-                                                        latte, cappucino
-                                                    </p>
-                                                    <span class="block">3.5</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Organic green tea</span>
-                                                    <p class="mb0">
-                                                        sourced locally
-                                                    </p>
-                                                    <span class="block">5.5 / pot</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Iced xoffee</span>
-                                                    <p class="mb0">
-                                                        w/ vanilla bean ice cream
-                                                    </p>
-                                                    <span class="block">4.5</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Freshly squeezed juice</span>
-                                                    <p class="mb0">
-                                                        orange, apple, watermelon
-                                                    </p>
-                                                    <span class="block">4.5</span>
-                                                </div>
-                                                <div class="mb40 mb-xs-24 ">
-                                                    <span class="bold block">Milkshake</span>
-                                                    <p class="mb0">
-                                                        salted caramel, vanilla bean
-                                                    </p>
-                                                    <span class="block">7</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--end of text tabs-->
-                        </div>
-                    </div>
-                    <!--end of row-->
-                </div>
-                <!--end of container-->
-            <!-- </section>
-            <a id="special"></a>
-            <section class="pb0">
-                <div class="container">
-                    <div class="row  mb64 mb-xs-40">
-                        <div class="col-sm-12 text-center">
-                            <div class="ribbon">
-                                <h6 class="uppercase mb0">Seasonal Special</h6>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row mb32 mb-xs-24">
-                        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                            <img alt="Hamburger" src="tavukburger.png" />
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-7 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                            <h2 class="alt-font">Spanner Crab
-                                <br /> salad w/ raw shaved
-                                <br />vegetables</h2>
-                            <p class="mb0">
-                                w/ kale, broccoli flowerette, spiced pumpkin, barley,
-                                <br class="hidden-sm hidden-xs" /> green chilli & pepitas on house made life bread with light
-                                <br class="hidden-sm hidden-xs" /> cottage cheese & free range eggs.
-                            </p>
-                            <span class="block">18</span>
-                        </div>
-                    </div>
-                </div>
-                
-            </section> -->
+            
             <a id="gallery"></a>
-<section class="pb0">
-    <div class="container">
-        <div class="row mb16 mb-xs-16">
-            <div class="col-sm-12 text-center">
-                <div class="ribbon">
-                    <h6 class="uppercase mb0">Burgerlerİmİz</h6>
+            <section class="pb0">
+                <div class="container">
+                    <div class="row mb16 mb-xs-16">
+                        <div class="col-sm-12 text-center">
+                            <div class="ribbon">
+                                <h6 class="uppercase mb0">Burgerlerİmİz</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row pt10 pb10 text-center">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="burger-img-wrapper">
+                                <img alt="Hold and Bite Special Burger" src="HoldandBite-Foto-Post8May2.png" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="burger-img-wrapper">
+                                <img alt="Hold and Bite Juicy Burger" src="Truffle-Burger2.png" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="burger-img-wrapper">
+                                <img alt="Hold and Bite Pure Burger" src="HB-Foto28.png" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="instafeed grid-gallery" data-user-name="walkdontruncafe">
-                    <ul>
-                        <section class="pb10 pt0"> <div class="container">
-                                <div class="row image-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                                    
-                                    <div class="col-sm-4" style="padding: 0; flex: 1; min-width: 250px;">
-                                        <div class="background-image-holder" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                                            <img alt="Hold and Bite Special Burger" src="HoldandBite-Foto-Post8May2.png" style="width: 100%; height: auto; display: block;" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-4" style="padding: 0; flex: 1; min-width: 250px;">
-                                        <div class="background-image-holder" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                                            <img alt="Hold and Bite Juicy Burger" src="Truffle-Burger2.png" style="width: 100%; height: auto; display: block;" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-4" style="padding: 0; flex: 1; min-width: 250px;">
-                                        <div class="background-image-holder" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                                            <img alt="Hold and Bite Pure Burger" src="HB-Foto28.png" style="width: 100%; height: auto; display: block;" />
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                </div>
-                            </section>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
+            </section>
+            
             <a id="contact"></a>
             <section>
                 <div class="container">
-                    <div class="row  mb64 mb-xs-40">
+                    <div class="row mb64 mb-xs-40">
                         <div class="col-sm-12 text-center">
                             <div class="ribbon">
                                 <h6 class="uppercase mb0">İletİŞİm Bİlgİlerİ</h6>
@@ -466,7 +359,7 @@
                     </div>
                     <!--end of row-->
                     <div class="row pt20 pb120">
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-sm-6 mb-xs-24">
                             <div class="location-card" id="location-card-1" style="box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden;">
                                 <div class="card-inner">
                                     <div class="map-embed-holder">
@@ -482,7 +375,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-sm-6">
                             <div class="location-card" id="location-card-2" style="box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden;">
                                 <div class="card-inner">
                                     <div class="map-embed-holder">
@@ -507,7 +400,7 @@
                     <div class="row">
                         <div class="col-sm-6 mb-xs-24 text-center-xs">
                             <div class="inline-block center">
-                                <img alt="Logo" class="image-small display-block center mb-xs-24" src="HOLD.png" />
+                                <img alt="Logo" class="footer-logo display-block center mb-xs-24" src="LogoHoldAndBite.png" />
                             </div>
                             <div class="inline-block display-block-xs text-center-xs">
                                 <h6 class="uppercase mb16">Hold & Bite</h6>
@@ -531,6 +424,11 @@
                         </div>
                     </div>
                     <!--end of row-->
+                    <div class="row">
+                        <div class="col-sm-12 text-center mt-xs-24 footer-copyright">
+                            <span class="sub display-block">Tüm Hakları Saklıdır. Design by <a href="https://www.culfa.net/" target="_blank" rel="noopener noreferrer" style="color: rgb(243, 227, 7);">CulfaNet</a></span>
+                        </div>
+                    </div>
                 </div>
                 <!--end of container-->
             </footer>

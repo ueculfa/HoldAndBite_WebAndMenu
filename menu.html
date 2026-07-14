@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="tr">
+    <head>
+        <meta charset="utf-8">
+        <title>Hold And Bite Menü</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.9">
+        <link rel="icon" type="image/png" href="LogoHoldAndBite.png">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <style>
+            body {
+                background: #f7f7f7;
+            }
+            .menu-hero {
+                background: linear-gradient(120deg, #161616 0%, #3c1c0f 100%);
+                color: #fff;
+                padding: 80px 0 60px;
+                text-align: center;
+            }
+            .menu-hero h1 {
+                font-size: 42px;
+                letter-spacing: 0.1em;
+                margin-bottom: 10px;
+                text-transform: uppercase;
+            }
+            .menu-hero p {
+                color: rgba(255,255,255,0.76);
+                font-size: 16px;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            .logo {
+                max-height: 220px;
+                width: auto;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .menu-panel {
+                background: #fff;
+                border-radius: 18px;
+                padding: 30px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+                margin-top: -60px;
+                position: relative;
+            }
+            .menu-header-bar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+            .menu-tab-list {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .menu-link-row {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-top: 18px;
+                align-items: center;
+            }
+            .menu-link-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 18px;
+                border-radius: 999px;
+                border: 1px solid rgba(0,0,0,0.08);
+                background: #fafafa;
+                color: #111;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                text-decoration: none;
+                transition: all 0.25s ease;
+            }
+            .menu-link-btn:hover {
+                background: #111;
+                color: #fff;
+                border-color: transparent;
+            }
+            .menu-tab-btn {
+                display: inline-block;
+                padding: 12px 26px;
+                border-radius: 999px;
+                border: 1px solid rgba(0,0,0,0.08);
+                background: #fff;
+                color: #222;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                text-decoration: none;
+            }
+            .menu-tab-btn.active {
+                background: #111;
+                color: #fff;
+                border-color: transparent;
+                box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+            }
+            
+            /* DİL SEÇENEĞİ STİLLERİ */
+            .lang-switcher {
+                display: flex;
+                background: #f0f0f0;
+                border-radius: 999px;
+                padding: 4px;
+            }
+            .lang-btn {
+                border: none;
+                background: transparent;
+                padding: 8px 16px;
+                border-radius: 999px;
+                font-weight: 700;
+                font-size: 14px;
+                color: #555;
+                cursor: pointer;
+                transition: 0.3s ease;
+            }
+            .lang-btn.active {
+                background: #d32f2f;
+                color: #fff;
+                box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+            }
+            .en-text { display: none; }
+            body.lang-en .tr-text { display: none; }
+            body.lang-en .en-text { display: inline; }
+
+            .menu-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 24px;
+            }
+            .menu-card {
+                border-radius: 18px;
+                border: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 16px 40px rgba(0,0,0,0.05);
+                padding: 28px;
+                background: #fff;
+            }
+            .menu-card h3 {
+                margin-bottom: 18px;
+                font-size: 20px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+            .menu-card .menu-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-wrap: nowrap;
+                gap: 15px;
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+            }
+            .menu-card .menu-item:last-child {
+                border-bottom: none;
+            }
+            .menu-card .item-info {
+                flex: 1;
+            }
+            .menu-card .item-name {
+                margin: 0;
+                font-size: 15px;
+                color: #222;
+                font-weight: 700;
+            }
+            .menu-card .ingredients {
+                margin: 6px 0 0 0;
+                font-size: 12.5px;
+                color: #666;
+                line-height: 1.4;
+            }
+            .menu-card .price {
+                font-weight: 800;
+                color: #111;
+                white-space: nowrap;
+                margin-top: 1px;
+                text-align: right;
+            }
+            .menu-card .category-title {
+                margin: 20px 0 12px;
+                color: #d32f2f;
+                font-size: 15px;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                border-bottom: 2px solid #f0f0f0;
+                padding-bottom: 5px;
+            }
+            .menu-card .category-title:first-child {
+                margin-top: 0;
+            }
+            .menu-note {
+                font-size: 12px;
+                color: #777;
+                margin-top: 20px;
+                text-align: center;
+                grid-column: 1 / -1;
+            }
+            .back-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 24px;
+                color: #111;
+                text-decoration: none;
+                font-weight: 700;
+            }
+            .back-link i {
+                font-size: 16px;
+            }
+
+            /* --- MOBİL MENÜ DÜZELTMELERİ --- */
+            @media (max-width: 767px) {
+                .logo {
+                    max-height: 160px;
+                }
+
+                .nav-container {
+                    position: relative;
+                }
+                .mobile-toggle {
+                    cursor: pointer;
+                    padding: 15px;
+                    display: inline-block;
+                    font-size: 24px;
+                }
+                .nav-bar {
+                    display: none; /* Varsayılan olarak kapalı */
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    background: #fff;
+                    z-index: 999;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+                    padding: 15px 0;
+                }
+                .nav-bar.active {
+                    display: block; /* Tıklanınca açılacak */
+                }
+                .menu.inline-block {
+                    display: block;
+                    padding: 0;
+                }
+                .menu.inline-block li {
+                    display: block;
+                    margin: 10px 0;
+                }
+                .menu.inline-block li a {
+                    font-size: 16px;
+                    display: block;
+                    padding: 5px 20px;
+                }
+                
+                /* Diğer mobil düzeltmeler */
+                .menu-grid {
+                    grid-template-columns: 1fr;
+                }
+                .menu-hero {
+                    padding: 60px 16px 40px;
+                }
+                .menu-panel {
+                    padding: 22px;
+                    margin-top: -40px;
+                }
+                .menu-header-bar {
+                    justify-content: center;
+                }
+                .menu-tab-btn {
+                    width: 100%;
+                    text-align: center;
+                }
+                .menu-card .menu-item {
+                    flex-direction: column;
+                    gap: 8px;
+                }
+                .menu-card .price {
+                    text-align: left;
+                }
+            }
+            @media (min-width: 768px) and (max-width: 1024px) {
+                .menu-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="nav-container">
+            <a id="top"></a>
+            <nav class="pb16 pb-xs-0">
+                <div class="pt120 pb80 pt-xs-40 pb-xs-16">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <a href="index.html">
+                                    <img alt="Logo" class="logo" src="LogoHoldAndBite.png" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+
+        <div class="main-container">
+            
+            <section class="pb0">
+                <div class="container">
+                    <div class="menu-panel">
+                        <div class="menu-header-bar">
+                            <div class="menu-tab-list">
+                                <a href="#kas-menu" class="menu-tab-btn active"><span class="tr-text">Kaş Menü</span><span class="en-text">Kaş Menu</span></a>
+                                <a href="#bademli-menu" class="menu-tab-btn"><span class="tr-text">Bademli Menü</span><span class="en-text">Bademli Menu</span></a>
+                            </div>
+                            <div class="lang-switcher">
+                                <button class="lang-btn active" data-lang="tr">TR</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
+                        </div>
+
+                        <!-- KAŞ MENÜ -->
+                        <div id="kas-menu" class="menu-grid">
+                            <div class="menu-card">
+                                <h3><span class="tr-text">Kaş Şubesi</span><span class="en-text">Kaş Branch</span></h3>
+                                <p class="category-title"><span class="tr-text">Burgerler</span><span class="en-text">Burgers</span></p>
+                                
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Truffle Burger</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">%100 Dana Köfte, Brioche Ekmek, Trüflü Mayo, Turşu Relish, Iceberg, Burger Peyniri, Karamelize Soğan, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">100% Beef Patty, Brioche Bun, Truffle Mayo, Pickle Relish, Iceberg, Burger Cheese, Caramelized Onion, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 505₺ <br>/ 180g 585₺</span>
+                                </div>
+                                
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Cheese Burger</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">%100 Dana Köfte, Brioche Ekmek, Burger Sos, Iceberg, Burger Peyniri, Karamelize Soğan, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">100% Beef Patty, Brioche Bun, Burger Sauce, Iceberg, Burger Cheese, Caramelized Onion, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 475₺ <br>/ 180g 555₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Klasik Burger</span><span class="en-text">Classic Burger</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">%100 Dana Köfte, Brioche Ekmek, Burger Sos, Iceberg, Kırmızı Soğan, Domates, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">100% Beef Patty, Brioche Bun, Burger Sauce, Iceberg, Red Onion, Tomato, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 450₺ <br>/ 180g 530₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Sade Burger</span><span class="en-text">Patty - Bun</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">%100 Dana Köfte, Brioche Ekmek, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">100% Beef Patty, Brioche Bun, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 400₺ <br>/ 180g 480₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Tavuk Burger</span><span class="en-text">Chicken Burger</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Izgara Tavuk Göğüs, Brioche Ekmek, Sarımsaklı Mayonez, Coleslaw, Burger Peyniri, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">Grilled Chicken Breast, Brioche Bun, Garlic Mayonnaise, Coleslaw, Burger Cheese, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 400₺</span>
+                                </div>
+                                
+                                <p class="category-title">Hot Dog</p>
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Hot Dog</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Dana Sosis, Brioche Ekmek, Hardal Bazlı Sos, Küp Turşu, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">Beef Sausage, Brioche Bun, Mustard Based Sauce, Pickle, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">95g 420₺</span>
+                                </div>
+                            </div>
+
+                            <div class="menu-card">
+                                <p class="category-title"><span class="tr-text">Tabaklar</span><span class="en-text">Plates</span></p>
+                                
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Tavuk Izgara Tabağı</span><span class="en-text">Grilled Chicken Plate</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Izgara Tavuk Göğüs, Kızarmış Ekmek, Coleslaw, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">Grilled Chicken Breast, Toasted Bread, Coleslaw, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">240g 460₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Sosis Izgara Tabağı</span><span class="en-text">Grilled Sausage Plate</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Dana Sosis, Kızarmış Ekmek, Coleslaw, Hardal Sos, Baharatlı Patates Kızartması</span>
+                                            <span class="en-text">Beef Sausage, Toasted Bread, Coleslaw, Mustard Sauce, Spicy French Fries</span>
+                                        </p>
+                                    </div>
+                                    <span class="price"><span class="tr-text">Tek</span><span class="en-text">Single</span> 420₺ / <br><span class="tr-text">Çift</span><span class="en-text">Double</span> 590₺</span>
+                                </div>
+
+                                <p class="category-title"><span class="tr-text">Yancılar</span><span class="en-text">Sides</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Coleslaw</p></div><span class="price">110₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Patates Kızartması</span><span class="en-text">French Fries</span></p></div><span class="price">160₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Baharatlı Patates Kızartması</span><span class="en-text">Spicy French Fries</span></p></div><span class="price">160₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Bergama Tulumlu Patates</span><span class="en-text">Fries with Bergama Tulum</span></p></div><span class="price">200₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Parmesanlı Patates Kızartması</span><span class="en-text">Fries with Parmesan</span></p></div><span class="price">210₺</span></div>
+                                
+                                <p class="category-title"><span class="tr-text">Ekstralar</span><span class="en-text">Extras</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Jalapeno</p></div><span class="price">15₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Burger Peyniri</span><span class="en-text">Burger Cheese</span></p></div><span class="price">40₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Bergama Tulumu</span><span class="en-text">Bergama Tulum Cheese</span></p></div><span class="price">40₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Parmesan Peyniri</span><span class="en-text">Parmesan Cheese</span></p></div><span class="price">50₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Dana Füme</span><span class="en-text">Beef Bacon</span></p></div><span class="price">60₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">130gr Burger Köftesi</span><span class="en-text">130g Burger Patty</span></p></div><span class="price">180₺</span></div>
+                            </div>
+
+                            <div class="menu-card">
+                                <p class="category-title"><span class="tr-text">Soslar</span><span class="en-text">Sauces</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Trüflü Mayo</span><span class="en-text">Truffle Mayonnaise</span></p></div><span class="price">45₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Sarımsaklı Mayo</span><span class="en-text">Garlic Mayonnaise</span></p></div><span class="price">30₺</span></div>
+                                
+                                <p class="category-title"><span class="tr-text">Tatlı</span><span class="en-text">Dessert</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Çikolatalı Cookie</span><span class="en-text">Chocolate Cookie</span></p></div><span class="price">160₺</span></div>
+
+                                <p class="category-title"><span class="tr-text">İçecekler</span><span class="en-text">Beverages</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Coca Cola / Cola Zero</p></div><span class="price">90₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Fanta / Sprite</p></div><span class="price">90₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Fusetea</p></div><span class="price">90₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Uludağ Sade Gazoz / Portakal</span><span class="en-text">Uludag Sparkling / Orange</span></p></div><span class="price">75₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Özerhisar Ayran</p></div><span class="price">75₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Eker Ayran</p></div><span class="price">65₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Uludağ Maden Suyu</span><span class="en-text">Mineral Water</span></p></div><span class="price">40₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Uludağ Su</span><span class="en-text">Water</span></p></div><span class="price">30₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Türk Kahvesi</span><span class="en-text">Turkish Coffee</span></p></div><span class="price">100₺</span></div>
+                            </div>
+                            <div class="menu-note">
+                                * <span class="tr-text">180gr Burger Köfteli Burgerlerimiz Orta İyi Pişmiş Olarak Servis Edilir. Herhangi Bir Besin Alerjiniz Var İse Sipariş Esnasında Belirtmenizi Rica Ederiz.</span>
+                                <span class="en-text">180g burger patty is served medium well. Please let us know if you have any food allergies.</span>
+                            </div>
+                        </div>
+
+                        <!-- BADEMLİ MENÜ -->
+                        <div id="bademli-menu" class="menu-grid" style="display:none;">
+                            <div class="menu-card">
+                                <h3><span class="tr-text">Bademli Şubesi</span><span class="en-text">Bademli Branch</span></h3>
+                                <p class="category-title"><span class="tr-text">Burgerler</span><span class="en-text">Burgers</span></p>
+                                
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Bite</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Burger köftesi, dana füme, burger peyniri, karamelize soğan, burger sos, göbek marul, patates kızartması</span>
+                                            <span class="en-text">Beef patty, beef bacon, burger cheese, caramelized onion, burger sauce, iceberg. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 510₺<br>/ 180g 590₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Truffle</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Burger köftesi, burger peyniri, karamelize soğan, trüflü mayonez, turşu relish, göbek marul, patates kızartması</span>
+                                            <span class="en-text">Beef patty, burger cheese, caramelized onion, truffle mayo, pickle relish, iceberg. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 505₺ <br>/ 180g 585₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Cheese</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Burger köftesi, burger peyniri, karamelize soğan, burger sos, göbek marul, patates kızartması</span>
+                                            <span class="en-text">Beef patty, burger cheese, caramelized onion, burger sauce, iceberg. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 475₺ <br>/ 180g 555₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Klasik</span><span class="en-text">Classic</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Burger köftesi, kırmızı soğan, domates, burger sos, göbek marul, patates kızartması</span>
+                                            <span class="en-text">Beef patty, red onion, tomato, burger sauce, iceberg. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 450₺ <br>/ 180g 530₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Sade Burger</span><span class="en-text">Patty - Bun</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Burger köftesi, Brioche ekmek, patates kızartması</span>
+                                            <span class="en-text">Beef patty, brioche bun. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">130g 400₺ <br>/ 180g 480₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Tavuk Burger</span><span class="en-text">Chicken Burger</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Marine tavuk göğüs, 2 adet burger peyniri, mor lahanalı coleslaw, tabanda sarımsaklı mayo, patates kızartması</span>
+                                            <span class="en-text">Marinated grilled chicken, double burger cheese, coleslaw, iceberg, yoghurt and mayonnaise based sauce. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">120-130g 400₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Vegie</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Kırmızı Meksika fasulyeli, ay çekirdekli, kinoalı köfte, göbek marul, köz kırmızı biber sos, karamelize soğan, tabanda sarımsaklı mayo, patates kızartması</span>
+                                            <span class="en-text">Vegetarian patty (Red Mexican beans, kinoa and sunflower seeds), smokey red pepper sauce, caramelized onion, garlic mayonnaise based sauce. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">400₺</span>
+                                </div>
+                                
+                                <p class="category-title">Hot Dog</p>
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name">Hot Dog</p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">%100 Dana sosis, hardal bazlı ev yapımı sos, küp turşu, patates kızartması</span>
+                                            <span class="en-text">100% Beef sausage, mustard based homemade sauce, pickle. Served with french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">400₺</span>
+                                </div>
+                            </div>
+
+                            <div class="menu-card">
+                                <p class="category-title"><span class="tr-text">Tabaklar</span><span class="en-text">Plates</span></p>
+                                
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Izgara Tavuk</span><span class="en-text">Grilled Chicken</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">Marine ızgara tavuk, coleslaw, köz biber sos, patates kızartması</span>
+                                            <span class="en-text">Served with coleslaw, mustard based homemade sauce and french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price">250g 460₺</span>
+                                </div>
+
+                                <div class="menu-item">
+                                    <div class="item-info">
+                                        <p class="item-name"><span class="tr-text">Izgara Sosis</span><span class="en-text">Grilled Sausage</span></p>
+                                        <p class="ingredients">
+                                            <span class="tr-text">%100 Dana sosis, coleslaw, hardal sos, patates kızartması</span>
+                                            <span class="en-text">100% Beef Bratwurst sausage, served with coleslaw, smokey pepper sauce and french fries.</span>
+                                        </p>
+                                    </div>
+                                    <span class="price"><span class="tr-text">Tek</span><span class="en-text">Single</span> 420₺ / <br><span class="tr-text">Çift</span><span class="en-text">Double</span> 590₺</span>
+                                </div>
+
+                                <p class="category-title"><span class="tr-text">Yancılar</span><span class="en-text">Sides</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Coleslaw</p></div><span class="price">110₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Patates Kızartması</span><span class="en-text">French Fries</span></p></div><span class="price">160₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Baharatlı Patates Kızartması</span><span class="en-text">Spicy French Fries</span></p></div><span class="price">160₺</span></div>
+                                
+                                <p class="category-title"><span class="tr-text">Ekstralar</span><span class="en-text">Extras</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Jalapeno</p></div><span class="price">15₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Burger Peyniri</span><span class="en-text">Burger Cheese</span></p></div><span class="price">40₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Dana Füme</span><span class="en-text">Beef Bacon</span></p></div><span class="price">60₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">130gr Köfte</span><span class="en-text">130g Burger Patty</span></p></div><span class="price">190₺</span></div>
+                            </div>
+
+                            <div class="menu-card">
+                                <p class="category-title"><span class="tr-text">Soslar (ev yapımı)</span><span class="en-text">Sauces (homemade)</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Kırmızı Köz Biber Sos</span><span class="en-text">Smokey Red Pepper Sauce</span></p></div><span class="price">30₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Sarımsaklı Mayo</span><span class="en-text">Garlic Mayonnaise</span></p></div><span class="price">30₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Trüflü Mayo</span><span class="en-text">Truffle Mayonnaise</span></p></div><span class="price">45₺</span></div>
+
+                                <p class="category-title"><span class="tr-text">İçecekler</span><span class="en-text">Beverages</span></p>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Coca Cola - Zero - Fanta - Sprite</p></div><span class="price">90₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Fusetea Çeşitleri</span><span class="en-text">Fusetea Lemon - Peach</span></p></div><span class="price">90₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Naneli Ayran</span><span class="en-text">Peppermint Ayran</span></p></div><span class="price">90₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Ayran</p></div><span class="price">65₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Maden Suyu</span><span class="en-text">Mineral Water</span></p></div><span class="price">40₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Su</span><span class="en-text">Water</span></p></div><span class="price">30₺</span></div>
+                            </div>
+                            
+                            <div class="menu-note">
+                                * <span class="tr-text">180gr burger köftesi orta iyi pişmiş olarak servis edilir.</span> <span class="en-text">180g burger patty served as medium well.</span> <br>
+                                * <strong>GLUTEN FREE:</strong> <span class="tr-text">Glutensiz Burger Ekmeği Seçeneğimiz Mevcuttur +15₺ (Ekmek glutensizdir, ürün gluten içerebilir)</span> <span class="en-text">Gluten Free Burger Bun +15₺ (Burger may contain gluten)</span>
+                            </div>
+                        </div>
+                        
+                        <a href="index.html" class="back-link"><i class="ti-arrow-left"></i> <span class="tr-text">Anasayfaya Dön</span><span class="en-text">Back to Home</span></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                // MOBİL MENÜ DÜZELTMESİ (Hamburger İkonuna Tıklayınca Açılması İçin)
+                var mobileToggle = document.querySelector('.mobile-toggle');
+                var navBar = document.querySelector('.nav-bar');
+                
+                if (mobileToggle && navBar) {
+                    mobileToggle.addEventListener('click', function() {
+                        navBar.classList.toggle('active');
+                    });
+                }
+                
+                // Şube Tab Değiştirici
+                var tabButtons = document.querySelectorAll('.menu-tab-btn');
+                function activateMenu(hash) {
+                    tabButtons.forEach(function(item) { item.classList.remove('active'); });
+                    var targetId = hash === '#bademli-menu' ? 'bademli-menu' : 'kas-menu';
+                    var activeBtn = document.querySelector('.menu-tab-btn[href="#' + targetId + '"]');
+                    if (activeBtn) {
+                        activeBtn.classList.add('active');
+                    }
+                    document.getElementById('kas-menu').style.display = 'none';
+                    document.getElementById('bademli-menu').style.display = 'none';
+                    document.getElementById(targetId).style.display = 'grid';
+                }
+                tabButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        activateMenu(btn.getAttribute('href'));
+                        history.replaceState(null, '', btn.getAttribute('href'));
+                    });
+                });
+
+                var initialHash = window.location.hash;
+                if (initialHash === '#bademli-menu' || initialHash === '#kas-menu') {
+                    activateMenu(initialHash);
+                }
+
+                // Dil Değiştirici (Language Switcher)
+                var langButtons = document.querySelectorAll('.lang-btn');
+                langButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function(event) {
+                        var selectedLang = btn.getAttribute('data-lang');
+                        
+                        // Aktif Buton Stili
+                        langButtons.forEach(function(item) { item.classList.remove('active'); });
+                        btn.classList.add('active');
+                        
+                        // Body Sınıfını Değiştir
+                        if (selectedLang === 'en') {
+                            document.body.classList.add('lang-en');
+                            document.documentElement.lang = 'en';
+                        } else {
+                            document.body.classList.remove('lang-en');
+                            document.documentElement.lang = 'tr';
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
