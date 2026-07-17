@@ -1,5 +1,15 @@
 
 
+/* Larger, more eye-catching logo */
+.logo {
+	max-height: 340px;
+}
+@media all and (max-width: 767px) {
+	.logo {
+		max-height: 240px;
+	}
+}
+
 /* Add spacing between gallery/instafeed images */
 .instafeed .image-row .background-image-holder {
 	padding: 8px;
