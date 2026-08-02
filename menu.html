@@ -199,11 +199,18 @@
                 margin-top: 0;
             }
             .menu-note {
-                font-size: 12px;
-                color: #777;
+                font-size: 15px;
+                font-weight: 900;
+                color: #000;
                 margin-top: 20px;
-                text-align: center;
+                text-align: left;
                 grid-column: 1 / -1;
+            }
+            .menu-note-item {
+                margin-bottom: 6px;
+            }
+            .menu-note-item:last-child {
+                margin-bottom: 0;
             }
             .back-link {
                 display: inline-flex;
@@ -285,6 +292,18 @@
                 }
                 .menu-card .price {
                     text-align: left;
+                }
+                #kas-menu .menu-card:nth-child(1) {
+                    order: 1;
+                }
+                #kas-menu .menu-note {
+                    order: 2;
+                }
+                #kas-menu .menu-card:nth-child(2) {
+                    order: 3;
+                }
+                #kas-menu .menu-card:nth-child(3) {
+                    order: 4;
                 }
             }
             @media (min-width: 768px) and (max-width: 1024px) {
@@ -456,7 +475,7 @@
                                 <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Baharatlı Patates Kızartması</span><span class="en-text">Spicy French Fries</span></p></div><span class="price">160₺</span></div>
                                 
                                 <p class="category-title"><span class="tr-text">Ekstralar</span><span class="en-text">Extras</span></p>
-                                <div class="menu-item"><div class="item-info"><p class="item-name">Jalapeno</p></div><span class="price">15₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Jalapeno</p></div><span class="price">20₺</span></div>
                                 <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Burger Peyniri</span><span class="en-text">Burger Cheese</span></p></div><span class="price">40₺</span></div>
                                 <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Dana Füme</span><span class="en-text">Beef Bacon</span></p></div><span class="price">70₺</span></div>
                                 <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">130gr Köfte</span><span class="en-text">130g Patty</span></p></div><span class="price">200₺</span></div>
@@ -469,21 +488,17 @@
                                 <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Trüflü Mayo</span><span class="en-text">Truffle Mayonnaise</span></p></div><span class="price">55₺</span></div>
 
                                 <p class="category-title"><span class="tr-text">İçecekler</span><span class="en-text">Beverages</span></p>
-                                <div class="menu-item"><div class="item-info"><p class="item-name">Coca Cola / Cola Zero</p></div><span class="price">90₺</span></div>
-                                <div class="menu-item"><div class="item-info"><p class="item-name">Fanta / Sprite</p></div><span class="price">90₺</span></div>
-                                <div class="menu-item"><div class="item-info"><p class="item-name">Fusetea</p></div><span class="price">90₺</span></div>
-                                <div class="menu-item"><div class="item-info"><p class="item-name">Naneli Ayran</p></div><span class="price">100₺</span></div>
-                                <div class="menu-item"><div class="item-info"><p class="item-name">Ayran</p></div><span class="price">65₺</span></div>
-                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Maden Suyu </span><span class="en-text">Mineral water</span></p></div><span class="price">40₺</span></div>
-                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Su</span><span class="en-text">Water</span></p></div><span class="price">30₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Coca Cola / Cola Zero</p></div><span class="price">100₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Fanta / Sprite</p></div><span class="price">100₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Fusetea</p></div><span class="price">100₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Naneli Ayran</p></div><span class="price">110₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name">Ayran</p></div><span class="price">75₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Maden Suyu </span><span class="en-text">Mineral water</span></p></div><span class="price">50₺</span></div>
+                                <div class="menu-item"><div class="item-info"><p class="item-name"><span class="tr-text">Su</span><span class="en-text">Water</span></p></div><span class="price">40₺</span></div>
                             </div>
                             <div class="menu-note">
-                                * <span class="tr-text">180gr Burger Köfteli Burgerlerimiz Orta İyi Pişmiş Olarak Servis Edilir. Herhangi Bir Besin Alerjiniz Var İse Sipariş Esnasında Belirtmenizi Rica Ederiz.</span>
-                                <span class="en-text">180g burger patty is served medium well. Please let us know if you have any food allergies.</span>
-                                <br>
-                                * <span class="tr-text">Glutensiz burger ekmeği seçeneğimiz mevcuttur +15 ₺ (Ekmek glutensizdir, ürün gluten içerebilir)</span>
-                                <span class="en-text">Gluten-free burger bun option available +15 ₺ (Bread is gluten-free, product may contain gluten)</span>
-                            
+                                <div class="menu-note-item">* <span class="tr-text">180gr Burger Köfteli Burgerlerimiz Orta İyi Pişmiş Olarak Servis Edilir. Herhangi Bir Besin Alerjiniz Var İse Sipariş Esnasında Belirtmenizi Rica Ederiz.</span><span class="en-text">180g burger patty is served medium well. Please let us know if you have any food allergies.</span></div>
+                                <div class="menu-note-item">* <span class="tr-text">Glutensiz burger ekmeği seçeneğimiz mevcuttur +20 ₺ (Ekmek glutensizdir, ürün gluten içerebilir)</span><span class="en-text">Gluten-free burger bun option available +20 ₺ (Bread is gluten-free, product may contain gluten)</span></div>
                             </div>
                         </div>
 
